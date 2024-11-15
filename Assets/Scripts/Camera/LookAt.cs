@@ -30,7 +30,7 @@ public class LookAt : MonoBehaviour
         }
         else if(highlitObject != null)
         {
-            highlitObject.GetComponent<Interactible>().DeHighlightSelf();
+            Destroy(highlitObject.GetComponent<Outline>());
         }
     }
 
@@ -38,11 +38,13 @@ public class LookAt : MonoBehaviour
     {
 
         Debug.Log("Highlighting Object");
-        Interactible hitObjectScript = hitTransform.GetComponent<Interactible>();
+        if(hitTransform.GetComponent<Outline>() == null) 
+        { 
+            var outline = hitTransform.gameObject.AddComponent<Outline>();
 
-        if (hitObjectScript != null)
-        {
-            hitObjectScript.HighlightSelf();
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            outline.OutlineColor = Color.cyan;
+            outline.OutlineWidth = 5f;
         }
         else
         {
