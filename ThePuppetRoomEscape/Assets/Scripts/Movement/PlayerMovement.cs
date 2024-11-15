@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public float rotationSpeed = 150f;
     private Vector3 moveDirection;
+    private float mouseSensitivity = 10f;
 
     void Start()
     {
@@ -18,13 +19,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
  
-        float moveHorizontal = Input.GetAxis("Horizontal"); // A (-1) and D (+1)
-        float moveVertical = Input.GetAxis("Vertical");     // W (+1) and S (-1)
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");   
 
 
         moveDirection = transform.forward * moveVertical + transform.right * moveHorizontal;
 
-        float mouseX = Input.GetAxis("Mouse X");
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(Vector3.up, mouseX * rotationSpeed * Time.deltaTime);
     }
 
