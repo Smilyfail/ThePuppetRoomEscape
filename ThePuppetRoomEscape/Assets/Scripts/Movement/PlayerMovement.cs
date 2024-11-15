@@ -1,31 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float movementSpeed;
-    
-    // Start is called before the first frame update
+    [SerializeField] Rigidbody rb;
+    public float moveSpeed = 5f;
+    public float rotationSpeed = 150f;
+    private Vector3 moveDirection;
+
     void Start()
     {
-        movementSpeed = 5;
+
     }
 
-    // Update is called once per frame
     void Update()
     {
+ 
+        float moveHorizontal = Input.GetAxis("Horizontal"); // A (-1) and D (+1)
+        float moveVertical = Input.GetAxis("Vertical");     // W (+1) and S (-1)
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
 
+        moveDirection = transform.forward * moveVertical + transform.right * moveHorizontal;
 
-        Vector3 moveDirection = new Vector3(horizontal, 0, vertical).normalized;
+        float mouseX = Input.GetAxis("Mouse X");
+        transform.Rotate(Vector3.up, mouseX * rotationSpeed * Time.deltaTime);
+    }
 
-        if (moveDirection.magnitude >= 0.1f)
+    void FixedUpdate()
+    {
+        // Apply movement
+        if (rb != null)
         {
-            transform.Translate(moveDirection * movementSpeed * Time.deltaTime, Space.World);
+            rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+
         }
+
     }
 }

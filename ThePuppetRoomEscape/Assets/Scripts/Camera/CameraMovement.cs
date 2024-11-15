@@ -1,21 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
-{
-    [SerializeField] Transform playerTransform;
-    private Camera camera;
-
-    void Start()
+    public class CameraMovement : MonoBehaviour
     {
-        camera = GetComponent<Camera>();
-        camera.transform.position = new Vector3(playerTransform.position.x, - playerTransform.position.y, playerTransform.position.z + 4);
-        camera.transform.LookAt(playerTransform.position);
-    }
+        [SerializeField] Transform playerTransform; 
+        Vector3 offset = new Vector3(0, 2, -4);
+        private float followSpeed = 5f;
+        private float rotationSpeed = 5f;
 
-    void Update()
-    {
-        camera.transform.LookAt(playerTransform.position);
+
+    void LateUpdate()
+        {
+
+            Vector3 targetPosition = playerTransform.position + playerTransform.TransformDirection(offset);
+
+            transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+
+            Quaternion targetRotation = Quaternion.LookRotation(playerTransform.position - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
     }
-}
+    }
