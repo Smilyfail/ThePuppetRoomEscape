@@ -9,6 +9,7 @@ public class LookAt : MonoBehaviour
     private string interactibleTag = "Interactible";
     Camera cam;
     Transform highlitObject;
+    private string interactionKey = "e";
 
     // Start is called before the first frame update
     void Start()
@@ -29,15 +30,15 @@ public class LookAt : MonoBehaviour
             }
         }
         else if(highlitObject != null)
-        {
             Destroy(highlitObject.GetComponent<Outline>());
-        }
+
+        if(Input.GetKeyUp(interactionKey) && highlitObject.CompareTag(interactibleTag))
+            highlitObject.GetComponent<Interactible>().Interact();
+
     }
 
     void HighlightObject(Transform hitTransform)
-    {
-
-        Debug.Log("Highlighting Object");
+    { 
         if(hitTransform.GetComponent<Outline>() == null) 
         { 
             var outline = hitTransform.gameObject.AddComponent<Outline>();
@@ -45,10 +46,6 @@ public class LookAt : MonoBehaviour
             outline.OutlineMode = Outline.Mode.OutlineAll;
             outline.OutlineColor = Color.cyan;
             outline.OutlineWidth = 5f;
-        }
-        else
-        {
-            Debug.Log("Interactible object has no Script!");
         }
     }
 }

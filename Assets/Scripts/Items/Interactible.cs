@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class Interactible : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] bool isCollectible;
+    [SerializeField] bool isMovable;
+    [SerializeField] Inventory inventory;
+    private string playerTag = "Player";
+
+    public void Interact()
     {
-        
+        if (isCollectible)
+        {
+            var inventory = GameObject.FindGameObjectWithTag(playerTag).GetComponent<Inventory>();
+            inventory.AddItemToInventory(gameObject.name);
+            Destroy(gameObject);
+        }
     }
 }
