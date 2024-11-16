@@ -19,11 +19,14 @@ public class MoveLetters : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0) && desk.isSortingLetters)
         {
+
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-
+            Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
             if (Physics.Raycast(ray, out hit) && hit.transform == transform)
             {
+
+                Debug.Log("Hit: " + hit.transform.name);
                 isDragging = true;
                 dragPlane = new Plane(Vector3.up, hit.point);
                 offset = transform.position - hit.point;
