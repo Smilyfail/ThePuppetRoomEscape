@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FormPuzzleHandler : MonoBehaviour
 {
-    [SerializeField] List<GameObject> pressedShapes, correctShapes;
+    [SerializeField] List<GameObject> pressedShapes, correctShapes, allShapes;
     [SerializeField] GameObject door;
 
     public void TryAddShape(GameObject shape)
@@ -15,6 +15,8 @@ public class FormPuzzleHandler : MonoBehaviour
             if (pressedShapes.Count == 4)
             {
                 //Maybe play successful sound
+                foreach (GameObject shapeObject in allShapes)
+                    shapeObject.tag = "Untagged";
                 Destroy(door);
             }
         }
