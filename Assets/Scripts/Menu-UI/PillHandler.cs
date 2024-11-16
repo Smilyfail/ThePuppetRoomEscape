@@ -52,7 +52,7 @@ public class PillHandler : MonoBehaviour
 
                 pillCounter--;
                 switchToFirstPerson();
-                startTimer(10f);
+                startTimer(120f);
 
             }
         }
