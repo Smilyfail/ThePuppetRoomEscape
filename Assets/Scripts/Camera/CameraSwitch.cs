@@ -10,7 +10,7 @@ public class CameraSwitch : MonoBehaviour
 {
 
     [SerializeField] PlayerMovement movement;
-    [SerializeField] CameraMovement camera;
+    [SerializeField] CameraMovement cameraScript;
     [SerializeField] GameObject pillText;
     [SerializeField] TextMeshPro pillCounterText;
     [SerializeField] GameObject gameOverScreen;
@@ -23,7 +23,7 @@ public class CameraSwitch : MonoBehaviour
     {
 
         movement.enabled = false;
-        camera.enabled = false;
+        cameraScript.enabled = false;
         fixedCamera = true;
         pillCounter = 3;
         pillCounterText.text = "Pill counter: " + pillCounter;
@@ -75,7 +75,7 @@ public class CameraSwitch : MonoBehaviour
     {
 
         movement.enabled = true;
-        camera.enabled = true;
+        cameraScript.enabled = true;
         fixedCamera = false;
 
     }
@@ -85,7 +85,7 @@ public class CameraSwitch : MonoBehaviour
 
         pillCounterText.text = "Pill counter: " + pillCounter;
         movement.enabled = false;
-        camera.enabled = false;
+        cameraScript.enabled = false;
         fixedCamera = true;
 
 

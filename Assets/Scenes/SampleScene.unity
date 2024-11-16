@@ -2285,6 +2285,7 @@ MonoBehaviour:
   isItemRemover: 0
   inventory: {fileID: 0}
   itemRequired: 
+  additionalBehaviour: {fileID: 0}
 --- !u!65 &1670466646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2672,7 +2673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1961442642
 MonoBehaviour:
   m_ObjectHideFlags: 0
