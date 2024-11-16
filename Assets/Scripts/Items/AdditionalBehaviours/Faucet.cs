@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Faucet : AdditionalInteraction
 {
-    [SerializeField] GameObject[] activatableObjects;
-    private string interactibleTag = "Interactible";
+    [SerializeField] GameObject mirror, foggedMirror;
+    [SerializeField, Header("Add all That can be interacted with after here")] GameObject[] activatableObjects;
+    private readonly string interactibleTag = "Interactible";
 
     public override void Act()
     {
         foreach (var obj in activatableObjects)
             obj.tag = interactibleTag;
+
+        mirror.SetActive(false);
+        foggedMirror.SetActive(true);
     }
 }
