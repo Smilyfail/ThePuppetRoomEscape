@@ -3,7 +3,7 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
 
-    [SerializeField] bool isCollectible, isMovable, isInspectible, isItemRemover, isNumberLock;
+    [SerializeField] bool isCollectible, isMovable, isInspectible, isItemRemover, hasSpecialAction;
     private bool isMovingToCam = false, isInspectingItem = false, isMovingBack = false;
     [SerializeField] Inventory inventory;
     [SerializeField, Header("Only fill this in for items that consume things!")] private string itemRequired;
@@ -50,10 +50,9 @@ public class Interactible : MonoBehaviour
             }
         }
 
-        else if(isNumberLock)
+        else if(hasSpecialAction)
         {
-
-
+            additionalBehaviour.Act();
         }
     }
 
