@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] Rigidbody rb;
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 150f;
+    private float moveSpeed = 2f;
+    private float rotationSpeed = 150f;
     private Vector3 moveDirection;
     private float mouseSensitivity = 10f;
 
@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Apply movement
         if (rb != null)
         {
             rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
