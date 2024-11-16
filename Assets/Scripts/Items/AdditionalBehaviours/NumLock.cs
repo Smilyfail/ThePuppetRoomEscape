@@ -9,13 +9,8 @@ public class NumLock : AdditionalInteraction
     private bool isInputtingCombination = true;
     [SerializeField] TMP_InputField numbercombination;
     private string rightcombination = "123456";
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject player, door;
     [SerializeField] Camera cam;
-
-    private void Start()
-    {
-
-    }
 
     override public void Act()
     {
@@ -32,7 +27,7 @@ public class NumLock : AdditionalInteraction
         {
             if (numbercombination.text == rightcombination)
             {
-                //TODO: Do things
+                Destroy(door);
             }
             else 
             {
