@@ -3,20 +3,21 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
 
-    [SerializeField] bool isCollectible, isMovable, isInspectible;
+    [SerializeField] bool isCollectible, isMovable, isInspectible, isItemRemover;
     private bool isMovingToCam = false, isInspectingItem = false, isMovingBack = false;
+    [SerializeField] Inventory inventory;
+    [SerializeField, Header("Only fill this in for items that consume things!")] private string itemRequired;
 
     private Vector3 originalPosition;
     private Quaternion originalRotation;
     private float verticalRotation = 0f, horizontalRotation = 0f;
 
-    [SerializeField] Inventory inventory;
     private Camera cam;
     private string playerTag = "Player";
     private GameObject playerObject;
 
     
-    private float followSpeed = 5f, rotationSpeed = 5f, mouseSensitivity = 2f;
+    private float followSpeed = 15f, rotationSpeed = 15f, mouseSensitivity = 2f;
 
     void Start()
     {
@@ -38,6 +39,9 @@ public class Interactible : MonoBehaviour
             playerObject.GetComponent<PlayerMovement>().enabled = false;
             cam.GetComponent<CameraMovement>().enabled = false;
         }
+
+        else if (isItemRemover)
+            inventory.RemoveItemFromInventory(itemRequired);
     }
 
     private void PickUp()
@@ -75,7 +79,7 @@ public class Interactible : MonoBehaviour
                 cam.GetComponent<CameraMovement>().enabled = true;
             }
         }
-            
+
         if (Input.GetKeyUp(KeyCode.E) && isCollectible && isInspectingItem && !isMovingBack && !isMovingToCam)
             PickUp();
 

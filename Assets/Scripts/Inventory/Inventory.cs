@@ -10,6 +10,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject[] inventorySlots;
     private bool[] isSlotOccupied = { false, false, false, false, false };
     [SerializeField] List<Sprite> itemSprites;
+    [SerializeField] Sprite defaultInventorySprite;
 
     void Start()
     {
@@ -22,8 +23,8 @@ public class Inventory : MonoBehaviour
 
         var itemPosition = Array.IndexOf(isSlotOccupied, false);
 
-        inventorySlots[itemPosition].GetComponent<Image>().sprite = itemSprites.Find(x => x.name == itemName);
-        inventorySlots[itemPosition].gameObject.SetActive(true);
+        inventorySlots[itemPosition].GetComponent<Image>().sprite = itemSprites.Find(x => x.name == itemName.ToLower());
+        inventorySlots[itemPosition].SetActive(true);
         isSlotOccupied[itemPosition] = true;
     }
 
@@ -31,9 +32,10 @@ public class Inventory : MonoBehaviour
     {
         if (itemsInInventory.Contains(itemName))
         {
-            var itemposition = Array.IndexOf(inventorySlots, inventorySlots.First(x => x.GetComponent<Image>().sprite.name == itemName));
+            var itemposition = Array.IndexOf(inventorySlots, inventorySlots.First(x => x.GetComponent<Image>().sprite.name == itemName.ToLower()));
             isSlotOccupied[itemposition] = false;
-            inventorySlots[itemposition].gameObject.SetActive(false);
+            inventorySlots[itemposition].SetActive(false);
+            inventorySlots[itemposition].GetComponent<Image>().sprite = defaultInventorySprite;
         }
     }
 }
