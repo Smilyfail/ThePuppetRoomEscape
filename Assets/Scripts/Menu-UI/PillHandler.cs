@@ -12,8 +12,13 @@ public class PillHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI pillCounterText;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] Camera mainCamera;
+    [SerializeField] GameObject pauseMenu;
+
     private bool fixedCamera;
     private int pillCounter;
+
+    private float timer;
+    private bool timerActive;
 
     public Vector3 fixedPosition = new Vector3(0f, 10f, -10f);
     public Vector3 fixedRotation = new Vector3(45f, 0f, 0f);
@@ -23,12 +28,15 @@ public class PillHandler : MonoBehaviour
     void Start()
     {
 
-        movement.enabled = false;
-        camera.enabled = false;
+
         fixedCamera = true;
         pillCounter = 3;
         pillCounterText.text = "Pill counter: " + pillCounter;
         setCameraToFixedPerspective();
+        movement.enabled = false;
+        camera.enabled = false;
+        timer = 0;
+        timerActive = false;
 
     }
 
@@ -36,7 +44,7 @@ public class PillHandler : MonoBehaviour
     void Update()
     {
 
-        if (fixedCamera && pillCounter > 0)
+        if (fixedCamera && pillCounter > 0 && !pauseMenu.activeSelf)
         {
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -44,7 +52,7 @@ public class PillHandler : MonoBehaviour
 
                 pillCounter--;
                 switchToFirstPerson();
-                StartCoroutine(startPlayerTime(10f));
+                startTimer(10f);
 
             }
         }
@@ -68,9 +76,18 @@ public class PillHandler : MonoBehaviour
 
         }
 
+        if (timerActive)
+        {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0f)
+            {
+                switchToFixedPerspective();
+                timerActive = false;
+            }
 
 
-
+        }
     }
 
     private void switchToFirstPerson()
@@ -96,10 +113,11 @@ public class PillHandler : MonoBehaviour
 
     }
 
-    private IEnumerator startPlayerTime(float waitTime)
+
+    private void startTimer(float duration)
     {
-        yield return new WaitForSeconds(waitTime);
-        switchToFixedPerspective();
+        timer = duration;
+        timerActive = true;
     }
 
     private void setCameraToFixedPerspective()
