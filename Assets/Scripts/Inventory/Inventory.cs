@@ -36,6 +36,7 @@ public class Inventory : MonoBehaviour
             isSlotOccupied[itemposition] = false;
             inventorySlots[itemposition].SetActive(false);
             inventorySlots[itemposition].GetComponent<Image>().sprite = defaultInventorySprite;
+            itemsInInventory.Remove(itemName);
         }
     }
 
@@ -51,5 +52,21 @@ public class Inventory : MonoBehaviour
 
             return false;
         }
+    }
+
+    public void clearInventory()
+    {
+
+        for(int i = 0; i < 5; i++)
+        {
+
+            isSlotOccupied[i] = false;
+            inventorySlots[i].SetActive(false);
+            inventorySlots[i].GetComponent<Image>().sprite = defaultInventorySprite;
+
+        }
+
+        itemsInInventory = new List<string>();
+
     }
 }
