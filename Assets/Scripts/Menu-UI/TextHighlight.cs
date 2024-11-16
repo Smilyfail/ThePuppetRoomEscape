@@ -26,7 +26,7 @@ public class TextHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ColorUtility.TryParseHtmlString("#A40000", out Color normalColor);
+        ColorUtility.TryParseHtmlString("#AB0000", out Color normalColor);
         text.color = normalColor;
     }
 }
