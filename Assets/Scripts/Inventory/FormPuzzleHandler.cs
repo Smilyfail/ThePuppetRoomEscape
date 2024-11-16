@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class FormPuzzleHandler : MonoBehaviour
             if (pressedShapes.Count == 4)
             {
                 //Maybe play successful sound
-                GameObject.Destroy(door);
+                Destroy(door);
             }
         }
         else
