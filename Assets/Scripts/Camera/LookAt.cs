@@ -3,11 +3,10 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     private RaycastHit hit;
-    private float interactionRange = 1f;
+    private float interactionRange = 2f;
     private string interactibleTag = "Interactible";
     Camera cam;
     Transform highlitObject;
-    private string interactionKey = "e";
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +18,11 @@ public class LookAt : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(cam.transform.position, cam.transform.forward * interactionRange, Color.red);
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactionRange) && hit.distance < interactionRange && hit.transform.CompareTag(interactibleTag))
+        Ray ray = cam.ScreenPointToRay(new Vector3(cam.pixelWidth / 2f, cam.pixelHeight / 2f, 0f));
+
+        if (Physics.SphereCast(ray, 0.1f, out hit, interactionRange) &&
+            hit.distance < interactionRange &&
+            hit.transform.CompareTag(interactibleTag))
         {
             highlitObject = hit.transform;
             HighlightObject(highlitObject);
@@ -28,7 +31,7 @@ public class LookAt : MonoBehaviour
         else if(highlitObject != null)
             Destroy(highlitObject.GetComponent<Outline>());
 
-        if(Input.GetKeyUp(interactionKey) && highlitObject.CompareTag(interactibleTag))
+        if(Input.GetKeyUp(KeyCode.E) && highlitObject != null && highlitObject.CompareTag(interactibleTag))
             highlitObject.GetComponent<Interactible>().Inspect();
 
     }
