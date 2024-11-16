@@ -3,7 +3,7 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     private RaycastHit hit;
-    private float interactionRange = 2f;
+    private float interactionRange = 1f;
     private string interactibleTag = "Interactible";
     Camera cam;
     Transform highlitObject;
@@ -20,7 +20,7 @@ public class LookAt : MonoBehaviour
         Debug.DrawRay(cam.transform.position, cam.transform.forward * interactionRange, Color.red);
         Ray ray = cam.ScreenPointToRay(new Vector3(cam.pixelWidth / 2f, cam.pixelHeight / 2f, 0f));
 
-        if (Physics.SphereCast(ray, 0.1f, out hit, interactionRange) &&
+        if (Physics.Raycast(ray, out hit, interactionRange) &&
             hit.distance < interactionRange &&
             hit.transform.CompareTag(interactibleTag))
         {
