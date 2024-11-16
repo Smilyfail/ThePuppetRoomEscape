@@ -16,6 +16,7 @@ public class Interactible : MonoBehaviour
     private string playerTag = "Player";
     private GameObject playerObject;
 
+    [SerializeField] AdditionalInteraction additionalBehaviour;
     
     private float followSpeed = 15f, rotationSpeed = 15f, mouseSensitivity = 2f;
 
@@ -41,7 +42,13 @@ public class Interactible : MonoBehaviour
         }
 
         else if (isItemRemover)
+        {
             inventory.RemoveItemFromInventory(itemRequired);
+            if (additionalBehaviour != null)
+            {
+                additionalBehaviour.Act();
+            }
+        }
     }
 
     private void PickUp()
