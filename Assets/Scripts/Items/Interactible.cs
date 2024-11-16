@@ -1,30 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Interactible : MonoBehaviour
 {
 
-    [SerializeField] bool isCollectible;
-    [SerializeField] bool isMovable;
-    [SerializeField] bool isInspectible;
-    private bool isMovingToCam = false;
-    private bool isInspectingItem = false;
-    private bool isMovingBack = false;
+    [SerializeField] bool isCollectible, isMovable, isInspectible;
+    private bool isMovingToCam = false, isInspectingItem = false, isMovingBack = false;
+
     private Vector3 originalPosition;
+    private Quaternion originalRotation;
+    private float verticalRotation = 0f, horizontalRotation = 0f;
+
     [SerializeField] Inventory inventory;
+    private Camera cam;
     private string playerTag = "Player";
     private GameObject playerObject;
-    private float followSpeed = 5f;
-    [SerializeField] private Camera cam;
+
+    
+    private float followSpeed = 5f, rotationSpeed = 5f, mouseSensitivity = 2f;
 
     void Start()
     {
         originalPosition = transform.position;
         playerObject = GameObject.FindGameObjectWithTag(playerTag);
         inventory = playerObject.GetComponent<Inventory>();
+        originalRotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z);
     }
 
     public void Inspect()
@@ -52,11 +51,6 @@ public class Interactible : MonoBehaviour
         isInspectingItem = false;
     }
 
-    void Update() 
-    {
-
-    }
-
     private void LateUpdate()
     {
         if (isMovingToCam)
@@ -70,8 +64,9 @@ public class Interactible : MonoBehaviour
         else if (isMovingBack)
         {
             transform.position = Vector3.Lerp(transform.position, originalPosition, followSpeed * Time.deltaTime);
-            
-            if (transform.position == originalPosition)
+            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, rotationSpeed * Time.deltaTime);
+
+            if (transform.position == originalPosition && transform.rotation == originalRotation)
             {
                 isMovingBack = false;
                 isInspectingItem = false;
@@ -80,11 +75,23 @@ public class Interactible : MonoBehaviour
                 cam.GetComponent<CameraMovement>().enabled = true;
             }
         }
-
+            
         if (Input.GetKeyUp(KeyCode.E) && isCollectible && isInspectingItem && !isMovingBack && !isMovingToCam)
             PickUp();
 
         else if (Input.GetKeyUp(KeyCode.Escape) && isInspectingItem && !isMovingBack && !isMovingToCam)
             isMovingBack = true;
+
+        if (isInspectingItem && Input.GetMouseButton(0))
+        {
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+            verticalRotation -= mouseY;
+
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+            horizontalRotation -= mouseX;
+
+            var targetRotation = Quaternion.Euler(0, horizontalRotation, verticalRotation);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }
