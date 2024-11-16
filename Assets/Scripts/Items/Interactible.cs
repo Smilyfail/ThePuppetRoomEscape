@@ -3,7 +3,7 @@ using UnityEngine;
 public class Interactible : MonoBehaviour
 {
 
-    [SerializeField] bool isCollectible, isMovable, isInspectible, isItemRemover, isNumberLock;
+    [SerializeField] bool isCollectible, isMovable, isInspectible, isItemRemover, hasSpecialAction;
     private bool isMovingToCam = false, isInspectingItem = false, isMovingBack = false;
     [SerializeField] Inventory inventory;
     [SerializeField, Header("Only fill this in for items that consume things!")] private string itemRequired;
@@ -12,7 +12,7 @@ public class Interactible : MonoBehaviour
     private Quaternion originalRotation;
     private float verticalRotation = 0f, horizontalRotation = 0f;
 
-    private Camera cam;
+    [SerializeField] Camera cam;
     private string playerTag = "Player";
     private GameObject playerObject;
 
@@ -32,8 +32,6 @@ public class Interactible : MonoBehaviour
     {
         if (isCollectible || isInspectible)
         {
-            cam = Camera.main;
-
             isMovingToCam = true;
             isInspectingItem = true;
 
@@ -50,10 +48,9 @@ public class Interactible : MonoBehaviour
             }
         }
 
-        else if(isNumberLock)
+        else if(hasSpecialAction)
         {
-
-
+            additionalBehaviour.Act();
         }
     }
 
