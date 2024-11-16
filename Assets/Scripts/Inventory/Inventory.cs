@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     {
         itemsInInventory.Add(itemName);
 
-        var itemPosition = Array.IndexOf(isSlotOccupied, true);
+        var itemPosition = Array.IndexOf(isSlotOccupied, false);
 
         inventorySlots[itemPosition].GetComponent<Image>().sprite = itemSprites.Find(x => x.name == itemName);
         inventorySlots[itemPosition].gameObject.SetActive(true);
