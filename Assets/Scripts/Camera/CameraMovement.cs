@@ -9,7 +9,7 @@
 
         private float followSpeed = 100f;
         private float rotationSpeed = 5f;
-        private float mouseSensitivity = 2f;
+        private float mouseSensitivity = 5f;
         private float maxVerticalAngle = 60f;
 
         private float verticalRotation = 0f;
