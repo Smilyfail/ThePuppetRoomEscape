@@ -765,6 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 231275858}
+  text: {fileID: 0}
 --- !u!1 &401251447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,6 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 718031429}
+  text: {fileID: 0}
 --- !u!114 &718031428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 822469829}
+  text: {fileID: 0}
 --- !u!1 &918765326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,9 +1802,10 @@ MonoBehaviour:
   isMovable: 0
   isInspectible: 0
   isItemRemover: 0
-  isNumberLock: 0
+  hasSpecialAction: 0
   inventory: {fileID: 0}
   itemRequired: 
+  cam: {fileID: 0}
   additionalBehaviour: {fileID: 0}
 --- !u!65 &1044802706
 BoxCollider:
@@ -2117,6 +2121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1239675728}
+  text: {fileID: 0}
 --- !u!114 &1239675727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2769,9 +2774,10 @@ MonoBehaviour:
   isMovable: 0
   isInspectible: 0
   isItemRemover: 0
-  isNumberLock: 0
+  hasSpecialAction: 0
   inventory: {fileID: 0}
   itemRequired: 
+  cam: {fileID: 0}
   additionalBehaviour: {fileID: 0}
 --- !u!65 &1670466646
 BoxCollider:
@@ -3181,7 +3187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1961442642
 MonoBehaviour:
   m_ObjectHideFlags: 0
