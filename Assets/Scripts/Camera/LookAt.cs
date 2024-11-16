@@ -3,7 +3,7 @@ using UnityEngine;
 public class LookAt : MonoBehaviour
 {
     private RaycastHit hit;
-    private float interactionRange = 10f;
+    private float interactionRange = 1f;
     private string interactibleTag = "Interactible";
     Camera cam;
     Transform highlitObject;

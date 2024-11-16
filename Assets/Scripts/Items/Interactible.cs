@@ -70,7 +70,7 @@ public class Interactible : MonoBehaviour
     {
         if (isMovingToCam)
         {
-            Vector3 targetPosition = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.5f));
+            Vector3 targetPosition = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.4f));
             transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
             if (transform.position == targetPosition)
