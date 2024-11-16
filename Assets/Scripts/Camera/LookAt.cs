@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LookAt : MonoBehaviour
@@ -21,24 +19,22 @@ public class LookAt : MonoBehaviour
     void Update()
     {
         Debug.DrawRay(cam.transform.position, cam.transform.forward * interactionRange, Color.red);
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactionRange))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactionRange) && hit.distance < interactionRange && hit.transform.CompareTag(interactibleTag))
         {
-            if (hit.distance < interactionRange && hit.transform.CompareTag(interactibleTag))
-            {
-                highlitObject = hit.transform;
-                HighlightObject(highlitObject);
-            }
+            highlitObject = hit.transform;
+            HighlightObject(highlitObject);
         }
+
         else if(highlitObject != null)
             Destroy(highlitObject.GetComponent<Outline>());
 
         if(Input.GetKeyUp(interactionKey) && highlitObject.CompareTag(interactibleTag))
-            highlitObject.GetComponent<Interactible>().Interact();
+            highlitObject.GetComponent<Interactible>().Inspect();
 
     }
 
     void HighlightObject(Transform hitTransform)
-    { 
+    {
         if(hitTransform.GetComponent<Outline>() == null) 
         { 
             var outline = hitTransform.gameObject.AddComponent<Outline>();
