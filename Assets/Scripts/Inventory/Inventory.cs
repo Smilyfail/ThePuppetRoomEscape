@@ -38,4 +38,18 @@ public class Inventory : MonoBehaviour
             inventorySlots[itemposition].GetComponent<Image>().sprite = defaultInventorySprite;
         }
     }
+
+    public bool isFull()
+    {
+
+        if(itemsInInventory.Count == 5)
+        {
+
+            return true;
+        } else
+        {
+
+            return false;
+        }
+    }
 }
