@@ -4,7 +4,7 @@ using UnityEngine;
 public class FormPuzzleHandler : MonoBehaviour
 {
     [SerializeField] List<GameObject> pressedShapes, correctShapes, allShapes;
-    [SerializeField] GameObject door;
+    [SerializeField] GameObject player;
 
     public void TryAddShape(GameObject shape)
     {
@@ -17,7 +17,7 @@ public class FormPuzzleHandler : MonoBehaviour
                 //Maybe play successful sound
                 foreach (GameObject shapeObject in allShapes)
                     shapeObject.tag = "Untagged";
-                Destroy(door);
+                player.transform.position = new Vector3(-0.602999985f, 0.43599999f, -4.54400015f);
             }
         }
         else
