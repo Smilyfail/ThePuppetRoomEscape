@@ -2578,6 +2578,9 @@ MonoBehaviour:
   gameOverScreen: {fileID: 2109886835}
   mainCamera: {fileID: 963194227}
   pauseMenu: {fileID: 948700573}
+  pillOne: {fileID: 1515657549}
+  pillTwo: {fileID: 1755500279}
+  pillThree: {fileID: 1376479332}
   fixedPosition: {x: 0, y: 10, z: -10}
   fixedRotation: {x: 45, y: 0, z: 0}
 --- !u!1 &455801195

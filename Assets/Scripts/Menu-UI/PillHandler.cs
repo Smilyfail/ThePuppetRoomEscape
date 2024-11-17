@@ -13,6 +13,9 @@ public class PillHandler : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] Camera mainCamera;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject pillOne;
+    [SerializeField] GameObject pillTwo;
+    [SerializeField] GameObject pillThree;
 
     private bool fixedCamera;
     private int pillCounter;
@@ -51,6 +54,7 @@ public class PillHandler : MonoBehaviour
             {
 
                 pillCounter--;
+                setPillPictures();
                 switchToFirstPerson();
                 startTimer(120f);
 
@@ -126,5 +130,20 @@ public class PillHandler : MonoBehaviour
         mainCamera.transform.position = fixedPosition;
         mainCamera.transform.rotation = Quaternion.Euler(fixedRotation);
 
+    }
+
+    private void setPillPictures()
+    {
+        if (pillCounter == 2)
+        {
+
+            pillThree.SetActive(false);
+        }
+
+        if (pillCounter == 1)
+        {
+
+            pillTwo.SetActive(false);
+        }
     }
 }
