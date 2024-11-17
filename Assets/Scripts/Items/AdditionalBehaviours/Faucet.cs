@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Faucet : AdditionalInteraction
 {
-    [SerializeField] GameObject mirror, foggedMirror;
+    [SerializeField] GameObject helpText;
     [SerializeField, Header("Add all That can be interacted with after here")] GameObject[] activatableObjects;
     private readonly string interactibleTag = "Interactible";
 
@@ -11,7 +11,6 @@ public class Faucet : AdditionalInteraction
         foreach (var obj in activatableObjects)
             obj.tag = interactibleTag;
 
-        mirror.SetActive(false);
-        foggedMirror.SetActive(true);
+        helpText.gameObject.SetActive(true);
     }
 }
