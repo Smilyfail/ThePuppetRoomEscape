@@ -22,7 +22,6 @@ public class MainMenuButtons : MonoBehaviour
         public void openSettingPanel()
         {
 
-            mainMenuPanel.SetActive(false);
             settingPanel.SetActive(true);
 
     }
@@ -30,7 +29,6 @@ public class MainMenuButtons : MonoBehaviour
     public void openMainMenuPanel()
     {
 
-        mainMenuPanel.SetActive(true);
         settingPanel.SetActive(false);
 
     }

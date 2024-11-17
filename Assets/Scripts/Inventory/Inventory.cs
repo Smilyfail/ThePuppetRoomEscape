@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         itemsInInventory = new List<string>();
+        foreach (var itemSlot in inventorySlots)
+            itemSlot.SetActive(false);
     }
 
     public void AddItemToInventory(string itemName)
@@ -36,6 +38,37 @@ public class Inventory : MonoBehaviour
             isSlotOccupied[itemposition] = false;
             inventorySlots[itemposition].SetActive(false);
             inventorySlots[itemposition].GetComponent<Image>().sprite = defaultInventorySprite;
+            itemsInInventory.Remove(itemName);
         }
+    }
+
+    public bool isFull()
+    {
+
+        if(itemsInInventory.Count == 5)
+        {
+
+            return true;
+        } else
+        {
+
+            return false;
+        }
+    }
+
+    public void clearInventory()
+    {
+
+        for(int i = 0; i < 5; i++)
+        {
+
+            isSlotOccupied[i] = false;
+            inventorySlots[i].SetActive(false);
+            inventorySlots[i].GetComponent<Image>().sprite = defaultInventorySprite;
+
+        }
+
+        itemsInInventory = new List<string>();
+
     }
 }

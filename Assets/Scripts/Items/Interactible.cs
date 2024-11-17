@@ -12,13 +12,14 @@ public class Interactible : MonoBehaviour
     private Quaternion originalRotation;
     private float verticalRotation = 0f, horizontalRotation = 0f;
 
+
     [SerializeField] Camera cam;
-    private string playerTag = "Player";
+    private readonly string playerTag = "Player";
     private GameObject playerObject;
 
     [SerializeField] AdditionalInteraction additionalBehaviour;
     
-    private float followSpeed = 15f, rotationSpeed = 15f, mouseSensitivity = 2f;
+    private readonly float followSpeed = 15f, rotationSpeed = 15f, mouseSensitivity = 2f;
 
     void Start()
     {
@@ -69,7 +70,7 @@ public class Interactible : MonoBehaviour
     {
         if (isMovingToCam)
         {
-            Vector3 targetPosition = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 2f));
+            Vector3 targetPosition = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.4f));
             transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
 
             if (transform.position == targetPosition)

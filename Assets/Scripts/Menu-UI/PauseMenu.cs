@@ -38,7 +38,6 @@ public class PauseMenu : MonoBehaviour
             else
             {
 
-                isPaused = false;
                 continueGame();
 
             }
@@ -53,6 +52,7 @@ public class PauseMenu : MonoBehaviour
     public void continueGame()
     {
 
+        isPaused = false;
         pauseMenu.SetActive(false);
         player.enabled = true;
         Time.timeScale = 1;

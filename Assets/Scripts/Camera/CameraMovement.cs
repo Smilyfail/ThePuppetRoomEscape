@@ -5,7 +5,7 @@
     public class CameraMovement : MonoBehaviour
     {
         [SerializeField] Transform playerTransform; 
-        Vector3 offset = new Vector3(0, 2, -4);
+        Vector3 offset = new Vector3(0, 0.5f, 0);
 
         private float followSpeed = 100f;
         private float rotationSpeed = 5f;
