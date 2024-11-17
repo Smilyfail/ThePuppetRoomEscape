@@ -6279,13 +6279,11 @@ MonoBehaviour:
   - {fileID: 669196266}
   - {fileID: 257060460}
   - {fileID: 2130587691}
-  - {fileID: 945038582}
   itemSprites:
-  - {fileID: 21300000, guid: 6493228d7655919419d4f92ff1cb06e9, type: 3}
-  - {fileID: 21300000, guid: 77927c13c32fa7049a3e43cf0c4dfa41, type: 3}
-  - {fileID: 21300000, guid: c4a80a94404926d49a74f57d17ec09d9, type: 3}
-  - {fileID: 21300000, guid: fb37328bb4c75d34eabdb5db6b0976b1, type: 3}
-  - {fileID: 21300000, guid: c5159487608221e41b2bb58db03b5819, type: 3}
+  - {fileID: 21300000, guid: 1c4f3e8698491194eb5a6f46d915d4ea, type: 3}
+  - {fileID: 21300000, guid: 97e623aaaa61fd343b20086c20f96ad8, type: 3}
+  - {fileID: 21300000, guid: 0ae41fe8a56595443b9379314c8682e6, type: 3}
+  - {fileID: 21300000, guid: 7866f3ad49349f247932f41bbdb16fcb, type: 3}
   defaultInventorySprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!136 &446716399
 CapsuleCollider:
