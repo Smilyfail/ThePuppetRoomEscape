@@ -51,7 +51,7 @@ public class PillHandler : MonoBehaviour
         if (fixedCamera && pillCounter > 0 && !pauseMenu.activeSelf)
         {
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.F))
             {
 
                 pillCounter--;
