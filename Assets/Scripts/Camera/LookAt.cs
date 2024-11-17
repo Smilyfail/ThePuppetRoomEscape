@@ -17,7 +17,7 @@ public class LookAt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(cam.transform.position, cam.transform.forward * interactionRange, Color.red);
+        //Debug.DrawRay(cam.transform.position, cam.transform.forward * interactionRange, Color.red);
         Ray ray = cam.ScreenPointToRay(new Vector3(cam.pixelWidth / 2f, cam.pixelHeight / 2f, 0f));
 
         if (Physics.Raycast(ray, out hit, interactionRange) &&
