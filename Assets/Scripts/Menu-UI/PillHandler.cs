@@ -16,6 +16,7 @@ public class PillHandler : MonoBehaviour
     [SerializeField] GameObject pillOne;
     [SerializeField] GameObject pillTwo;
     [SerializeField] GameObject pillThree;
+    [SerializeField] GameObject inventory;
 
     private bool fixedCamera;
     private int pillCounter;
@@ -56,7 +57,7 @@ public class PillHandler : MonoBehaviour
                 pillCounter--;
                 setPillPictures();
                 switchToFirstPerson();
-                startTimer(120f);
+                startTimer(60f);
 
             }
         }
@@ -102,6 +103,12 @@ public class PillHandler : MonoBehaviour
         fixedCamera = false;
         pillText.SetActive(false);
 
+        if (!inventory.activeInHierarchy)
+        {
+
+            inventory.SetActive(true);
+        }
+
     }
 
     private void switchToFixedPerspective()
@@ -113,6 +120,12 @@ public class PillHandler : MonoBehaviour
         camera.enabled = false;
         fixedCamera = true;
         setCameraToFixedPerspective();
+
+        if(inventory.activeInHierarchy)
+        {
+
+            inventory.SetActive(false);
+        }
 
 
     }
