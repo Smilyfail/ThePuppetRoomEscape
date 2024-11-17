@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
 {
     List<string> itemsInInventory;
     [SerializeField] GameObject[] inventorySlots;
-    private bool[] isSlotOccupied = { false, false, false, false, false };
+    private bool[] isSlotOccupied = { false, false, false, false };
     [SerializeField] List<Sprite> itemSprites;
     [SerializeField] Sprite defaultInventorySprite;
 
@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
     public bool isFull()
     {
 
-        if(itemsInInventory.Count == 5)
+        if(itemsInInventory.Count == 4)
         {
 
             return true;
@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
     public void clearInventory()
     {
 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < 4; i++)
         {
 
             isSlotOccupied[i] = false;
