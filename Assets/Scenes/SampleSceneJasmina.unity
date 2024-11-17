@@ -1881,8 +1881,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 401251453}
-  moveSpeed: 5
-  rotationSpeed: 150
 --- !u!54 &401251453
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1922,6 +1920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7145bf8a2d0cf3449c2c7458dc94282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorySlots: []
+  itemSprites: []
+  defaultInventorySprite: {fileID: 0}
 --- !u!1 &404005793 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a93550b29df591049851c20af6d65d0e, type: 3}
@@ -3286,8 +3287,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 89342b3044451c3469be2fd3de38fbfb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 699413079}
   m_SourcePrefab: {fileID: 100100000, guid: 89342b3044451c3469be2fd3de38fbfb, type: 3}
+--- !u!1 &699413078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 89342b3044451c3469be2fd3de38fbfb, type: 3}
+  m_PrefabInstance: {fileID: 699413077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &699413079
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699413078}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2212009239438826721, guid: 89342b3044451c3469be2fd3de38fbfb, type: 3}
 --- !u!1001 &703667511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8595,8 +8626,12 @@ MonoBehaviour:
   isCollectible: 1
   isMovable: 0
   isInspectible: 0
+  isItemRemover: 0
+  hasSpecialAction: 0
   inventory: {fileID: 0}
+  itemRequired: 
   cam: {fileID: 0}
+  additionalBehaviour: {fileID: 0}
 --- !u!65 &1670466646
 BoxCollider:
   m_ObjectHideFlags: 0
