@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         itemsInInventory = new List<string>();
+        foreach (var itemSlot in inventorySlots)
+            itemSlot.SetActive(false);
     }
 
     public void AddItemToInventory(string itemName)
